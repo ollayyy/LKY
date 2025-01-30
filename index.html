@@ -4,38 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lucky ($LKY) - Memecoin</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap" rel="stylesheet">
+
   <style>
-    /* ----- RESET SOME DEFAULTS ----- */
+    /* ----- RESET/BASE STYLES ----- */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Arial", sans-serif;
     }
-
-    html, body {
+    html {
       scroll-behavior: smooth;
-      background-color: #fdfcf0;
     }
-
-    /* ----- GLOBAL STYLING ----- */
     body {
+      font-family: 'Arial', sans-serif;
       color: #333;
       line-height: 1.6;
+      background-color: #fdfcf0;
     }
-
     a {
       text-decoration: none;
       color: inherit;
     }
-    
+
     /* ----- HEADER & NAVIGATION ----- */
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 1rem 2rem;
-      background-color: #4cbb17; /* A green reminiscent of Lucky Leprechaun */
+      background-color: #4cbb17; /* Main Leprechaun Green */
       color: #fff;
       position: fixed;
       width: 100%;
@@ -43,74 +43,68 @@
       z-index: 999;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
-
     .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
+      font-family: 'Irish Grover', cursive;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
     }
-
     nav ul {
       list-style-type: none;
       display: flex;
       gap: 1rem;
     }
-
     nav ul li {
       cursor: pointer;
       font-weight: bold;
       transition: color 0.3s;
     }
-
     nav ul li:hover {
-      color: #FFD700; /* gold highlight on hover */
+      color: #FFD700; /* Gold highlight on hover */
     }
 
-    /* Offset to avoid hidden top content behind fixed header */
+    /* ----- SECTIONS ----- */
     .section {
       padding: 100px 2rem 60px;
       max-width: 1200px;
       margin: 0 auto;
     }
+    .section h2 {
+      font-family: 'Irish Grover', cursive;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #4cbb17;
+      text-align: center;
+    }
 
     /* ----- HERO SECTION ----- */
-    .hero {
+    #hero {
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: url("https://via.placeholder.com/1200x800/4cbb17/FFFFFF?text=Lucky+the+Leprechaun") no-repeat center/cover;
-      min-height: 80vh;
+      min-height: 100vh;
       color: #fff;
       position: relative;
+      background: linear-gradient(to bottom right, #4cbb17, #008000, #006400);
+      overflow: hidden;
     }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background-color: rgba(0, 0, 0, 0.4);
-    }
-
-    .hero-content {
-      position: relative;
+    #hero .hero-content {
       z-index: 1;
       max-width: 800px;
       margin: auto;
       padding: 2rem;
     }
-
-    .hero h1 {
+    #hero h1 {
+      font-family: 'Irish Grover', cursive;
       font-size: 3rem;
       margin-bottom: 1rem;
       line-height: 1.2;
     }
-
-    .hero p {
+    #hero p {
       font-size: 1.2rem;
       margin-bottom: 2rem;
     }
-
-    .hero .cta-button {
+    #hero .cta-button {
       background-color: #FFD700;
       color: #4cbb17;
       padding: 1rem 2rem;
@@ -119,11 +113,36 @@
       font-size: 1rem;
       font-weight: bold;
       border-radius: 4px;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    #hero .cta-button:hover {
+      background-color: #fbc600;
+      transform: translateY(-2px);
     }
 
-    .hero .cta-button:hover {
-      background-color: #fbc600;
+    /* Optional subtle background animation (floating particles) */
+    .floating-particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .particle {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(255,215,0, 0.7);
+      border-radius: 50%;
+      animation: float 10s infinite ease-in-out;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-50px) scale(1.2); }
+      100% { transform: translateY(0) scale(1); }
     }
 
     /* ----- ABOUT SECTION ----- */
@@ -133,92 +152,105 @@
       gap: 1.5rem;
       align-items: center;
     }
-
     #about .about-content {
       flex: 1 1 500px;
     }
-
     #about img {
       flex: 1 1 400px;
       max-width: 100%;
       border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
-
     #about h2 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin-bottom: 1rem;
-      color: #4cbb17;
+      text-align: left;
     }
 
-    #about p {
+    /* ----- LORE SECTION ----- */
+    #lore {
+      background-color: #fff;
+      margin-top: -40px;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    #lore h2 {
       margin-bottom: 1rem;
+    }
+    #lore p {
+      margin-bottom: 1.2rem;
     }
 
     /* ----- TOKENOMICS ----- */
-    #tokenomics h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #4cbb17;
+    #tokenomics {
+      margin-top: 3rem;
     }
-
-    #tokenomics .tokenomics-content {
+    #tokenomics p {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .tokenomics-content {
       display: flex;
       flex-wrap: wrap;
       gap: 1.5rem;
-      margin-top: 1rem;
+      justify-content: center;
     }
-
-    #tokenomics .card {
-      flex: 1 1 calc(33% - 1rem);
+    .card {
+      flex: 1 1 calc(25% - 1rem);
       background-color: #fff;
       border: 1px solid #ddd;
       border-radius: 6px;
-      padding: 1rem;
+      padding: 1.5rem;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      max-width: 250px;
     }
-
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    }
     .card h3 {
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       color: #4cbb17;
+      font-family: 'Irish Grover', cursive;
+    }
+    .card p {
+      margin-bottom: 0.5rem;
     }
 
     /* ----- ROADMAP ----- */
-    #roadmap h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #4cbb17;
-      text-align: center;
+    #roadmap {
+      margin-top: 3rem;
     }
-
     .timeline {
       margin-top: 2rem;
       display: flex;
       flex-direction: column;
       gap: 2rem;
     }
-
     .timeline-item {
       background-color: #fff;
       border: 1px solid #ddd;
       border-radius: 6px;
       padding: 1.5rem;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
     }
-
+    .timeline-item:hover {
+      transform: translateY(-4px);
+    }
     .timeline-item h3 {
       margin-bottom: 0.5rem;
       color: #4cbb17;
+      font-family: 'Irish Grover', cursive;
     }
 
     /* ----- TEAM ----- */
-    #team h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #4cbb17;
-      text-align: center;
+    #team {
+      margin-top: 3rem;
     }
-
     .team-cards {
       display: flex;
       flex-wrap: wrap;
@@ -226,7 +258,6 @@
       justify-content: center;
       margin-top: 2rem;
     }
-
     .team-card {
       background-color: #fff;
       border: 1px solid #ddd;
@@ -235,8 +266,11 @@
       width: 250px;
       text-align: center;
       padding: 1rem;
+      transition: transform 0.3s;
     }
-
+    .team-card:hover {
+      transform: translateY(-4px);
+    }
     .team-card img {
       width: 80px;
       height: 80px;
@@ -244,10 +278,10 @@
       object-fit: cover;
       margin-bottom: 1rem;
     }
-
     .team-card h3 {
       margin-bottom: 0.5rem;
       color: #4cbb17;
+      font-family: 'Irish Grover', cursive;
     }
 
     /* ----- FOOTER ----- */
@@ -256,38 +290,45 @@
       color: #fff;
       text-align: center;
       padding: 1rem 2rem;
-      position: relative;
     }
-
     footer p {
       margin: 0.5rem 0;
     }
     
-    /* Responsive adjustments */
+    /* ----- RESPONSIVE ADJUSTMENTS ----- */
     @media(max-width: 768px) {
       header {
         flex-direction: column;
       }
-
       nav ul {
         flex-wrap: wrap;
         justify-content: center;
         margin-top: 0.5rem;
       }
-
       .section {
         padding: 100px 1rem 60px;
       }
-
-      #tokenomics .card {
-        flex: 1 1 100%;
+      #about {
+        flex-direction: column;
       }
-
-      .hero h1 {
+      #about .about-content {
+        order: 2;
+      }
+      #about img {
+        order: 1;
+      }
+      .tokenomics-content .card {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+      .team-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+      #hero h1 {
         font-size: 2rem;
       }
-
-      .hero p {
+      #hero p {
         font-size: 1rem;
       }
     }
@@ -304,6 +345,7 @@
       <ul>
         <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#lore">Lore</a></li>
         <li><a href="#tokenomics">Tokenomics</a></li>
         <li><a href="#roadmap">Roadmap</a></li>
         <li><a href="#team">Team</a></li>
@@ -312,38 +354,68 @@
   </header>
 
   <!-- ----- HERO SECTION ----- -->
-  <section id="hero" class="hero">
-    <div class="hero-overlay"></div>
+  <section id="hero">
+    <!-- Floating particles (optional decorative effect) -->
+    <div class="floating-particles">
+      <!-- You can add more or fewer circles; random positions + random animation delays -->
+      <div class="particle" style="left: 20%; top: 80%; animation-delay: 0s;"></div>
+      <div class="particle" style="left: 40%; top: 50%; animation-delay: 2s;"></div>
+      <div class="particle" style="left: 60%; top: 30%; animation-delay: 4s;"></div>
+      <div class="particle" style="left: 80%; top: 70%; animation-delay: 6s;"></div>
+    </div>
+
     <div class="hero-content">
       <h1>Lucky the Leprechaun</h1>
-      <p>The memecoin spreading luck and joy to all who dare to hodl! Join the rainbow ride!</p>
+      <p>The mischievous memecoin that brings good fortune and laughter wherever it goes.</p>
       <button class="cta-button">Buy $LKY Now</button>
     </div>
   </section>
 
   <!-- ----- ABOUT SECTION ----- -->
   <section id="about" class="section">
+    <img src="https://via.placeholder.com/600x400/4cbb17/ffffff?text=Lucky+the+Leprechaun" alt="Lucky the Leprechaun Image">
     <div class="about-content">
       <h2>About Lucky ($LKY)</h2>
       <p>
-        Lucky ($LKY) is a memecoin inspired by the spirit of the Leprechaun, 
-        known for luck, treasure, and a little mischief. With a passionate community 
-        and a lighthearted approach, $LKY aims to bring fun and fortunes to the crypto space.
+        Lucky ($LKY) is a memecoin that takes inspiration from the legendary Leprechaun,
+        weaving the spirit of Irish folklore into the fast-paced world of crypto.
+        Our token unites fun, fortune, and community to create a coin that’s more
+        than just a pot of gold—it's a shared adventure.
       </p>
       <p>
-        Our project is driven by our belief in fun, inclusivity, and the power of memes 
-        to unite people from all walks of life. Whether you’re a crypto veteran or a newcomer, 
-        Lucky ($LKY) offers an entertaining and potentially rewarding journey.
+        Through a lighthearted approach, Lucky ($LKY) encourages inclusivity, 
+        vibrant community engagement, and a sense of playful mischief. Whether 
+        you’re a seasoned crypto enthusiast or just starting your journey, 
+        Lucky ($LKY) offers a whimsical path forward.
       </p>
     </div>
-    <!-- Placeholder image -->
-    <img src="https://via.placeholder.com/600x400/4cbb17/ffffff?text=Lucky+the+Leprechaun" alt="Lucky the Leprechaun Image">
+  </section>
+
+  <!-- ----- LORE SECTION ----- -->
+  <section id="lore" class="section">
+    <h2>Lucky’s Lore</h2>
+    <p>
+      Long ago, in the misty hills of the Emerald Isle, a tiny Leprechaun named Lucky was tasked with
+      protecting the greatest treasure known to fairy folk: the Rainbow’s End. It’s said that Lucky 
+      discovered an ancient coin that granted its holder the power to spread joy, luck, and laughter.
+    </p>
+    <p>
+      Rather than keep it hidden, Lucky decided to share this magic with the world, forging a pact 
+      with travelers and wanderers who would carry his coin far and wide. Over time, stories of Lucky’s 
+      humor, generosity, and golden grin spread across the land, gathering a community of believers who 
+      championed the power of meme magic.
+    </p>
+    <p>
+      Today, Lucky’s tale lives on through $LKY, a token that embodies that same free spirit—an open 
+      invitation to find laughter in the unexpected and fortune in the simplest joys. By joining Lucky’s 
+      ranks, you become part of a living legend that blends myth, meme, and modern technology.
+    </p>
   </section>
 
   <!-- ----- TOKENOMICS SECTION ----- -->
   <section id="tokenomics" class="section">
     <h2>Tokenomics</h2>
-    <p>Transparent tokenomics that maximize community benefit and longevity.</p>
+    <p>Transparent and fair distribution designed for community growth and long-term sustainability.</p>
     <div class="tokenomics-content">
       <div class="card">
         <h3>Total Supply</h3>
@@ -354,8 +426,12 @@
         <p>30% locked liquidity</p>
       </div>
       <div class="card">
-        <h3>Marketing/Development</h3>
-        <p>10% allocated for ecosystem growth</p>
+        <h3>Marketing</h3>
+        <p>10% allocated for viral campaigns & partnerships</p>
+      </div>
+      <div class="card">
+        <h3>Community Rewards</h3>
+        <p>5% reserved for giveaways & holder incentives</p>
       </div>
       <!-- Add more tokenomics cards if needed -->
     </div>
@@ -369,24 +445,24 @@
         <h3>Phase 1: Launch & Community Building</h3>
         <ul>
           <li>Token launch & DEX listing</li>
-          <li>Initial community-building campaign</li>
-          <li>Website & social media channels</li>
+          <li>Website & social media kick-off</li>
+          <li>Initial community contests</li>
         </ul>
       </div>
       <div class="timeline-item">
         <h3>Phase 2: Partnerships & Marketing</h3>
         <ul>
-          <li>Influencer marketing push</li>
-          <li>Expansion to more exchanges</li>
-          <li>Community events & giveaways</li>
+          <li>Influencer collaborations</li>
+          <li>Centralized exchange (CEX) listings</li>
+          <li>Massive meme marketing push</li>
         </ul>
       </div>
       <div class="timeline-item">
-        <h3>Phase 3: Ecosystem Growth</h3>
+        <h3>Phase 3: Ecosystem Expansion</h3>
         <ul>
-          <li>NFT collection & marketplace integration</li>
-          <li>Staking & farming opportunities</li>
-          <li>Charity partnerships</li>
+          <li>Staking, farming & NFT collection</li>
+          <li>Charitable partnerships</li>
+          <li>Global community meetups</li>
         </ul>
       </div>
       <!-- Add more roadmap items if needed -->
